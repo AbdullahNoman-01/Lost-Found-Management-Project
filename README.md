@@ -1,79 +1,64 @@
-🎒 Campus Lost & Found Management System
+# 🎒 Campus Lost & Found Management System
 
-A web-based Lost & Found Management System built with Python and Django.
-The project is designed to help campus users report lost or found items and make it easier to manage and find those items through a centralized platform.
+A web-based **Lost & Found Management System** built with **Python and Django**.
 
-📌 Project Overview
+This project is designed to help campus users report lost and found items and make it easier to manage and discover those items through a centralized platform.
 
-The Campus Lost & Found Management System provides a simple platform where users can:
+---
 
-🔐 Create an account and authenticate securely (future updated)
+## 📌 Project Overview
 
-📢 Report lost items
+The **Campus Lost & Found Management System** provides a platform where users can:
 
-📦 Report found items
+- 📢 Report lost items
+- 📦 Report found items
+- 🔎 Browse lost and found item reports
+- 🏫 Manage campus-related lost and found information
+- 🖼️ Upload item images
+- 🎨 View information through a simple and user-friendly interface
 
-🔎 Browse lost and found item reports
+The main goal of this project is to make it easier for students and campus members to report and recover lost belongings.
 
-🏫 Manage campus-related lost and found information
+---
 
-🖼️ Upload and manage item images
+## ✨ Main Features
 
-🎨 Use static CSS and frontend assets for a better user experience
+### 🔴 Lost Items
 
-The main goal is to reduce the difficulty of recovering lost belongings on campus by keeping reports organized in one place.
+- Submit lost item reports
+- Store item information
+- Display reported lost items
+- Upload item images
+- View lost item details
 
-✨ Main Features
+### 🟢 Found Items
 
-🔐 Authentication (future updated)
+- Submit found item reports
+- Store found item information
+- Display reported found items
+- Upload item images
+- View found item details
 
-User registration and login
+### 🏫 Main Campus
 
-User authentication
+The `main_campus` app contains the main pages and common functionality of the project.
 
-Protected user-related functionality
+### 🖼️ Media Management
 
-🔴 Lost Items
+Uploaded item images are stored inside the `media/` directory.
 
-Submit lost item reports
+### 🎨 Static Files
 
-Store item information
+CSS and other frontend static files are organized inside the `static/` directory.
 
-Display reported lost items
+---
 
-Support item images/media
+## 🗂️ Project Structure
 
-🟢 Found Items
-
-Submit found item reports
-
-Store found item information
-
-Display reported found items
-
-Support item images/media
-
-🏫 Main Campus
-
-Central area for the main project pages
-
-Homepage and common project functionality
-
-🖼️ Media Management
-
-Uploaded item images are stored in the media/ directory.
-
-🎨 Static Files
-
-CSS and other frontend assets are organized inside the static/ directory.
-
-Collected static files can be stored in staticfiles/.
-
-🗂️ Project Structure
-
+```text
 assignment-8/
 │
-├── authentication/       # User authentication and account functionality (future updated)
+├── authentication/       # Authentication functionality (planned)
 │
 ├── found_items/          # Found item reporting and management
 │
@@ -81,103 +66,41 @@ assignment-8/
 │
 ├── main_campus/          # Main pages and campus-related functionality
 │
-├── media/                # Uploaded item images and media
+├── media/                # Uploaded images and media files
 │
-├── static/               # CSS, JavaScript and frontend static assets
+├── static/               # CSS and other static assets
 │
 ├── staticfiles/          # Collected static files
 │
-├── templates/             # Django HTML templates
+├── templates/            # Django HTML templates
 │
 ├── manage.py              # Django project management script
 │
-├── requirements.txt       # Python project dependencies
+├── requirements.txt       # Project dependencies
 │
-└── .gitignore             # Git ignored files and directories
+└── .gitignore             # Git ignored files
+```
 
-🛠️ Technology Stack
+---
 
-Technology
+## 🛠️ Technology Stack
 
-Purpose
+| Technology | Purpose |
+|---|---|
+| 🐍 Python | Backend Programming |
+| 🌐 Django | Web Framework |
+| 🖥️ HTML | Page Structure |
+| 🎨 CSS | User Interface Styling |
+| 🗄️ Database | Data Storage |
+| 📁 Django Media | Uploaded Images |
+| 📂 Django Static Files | CSS and Frontend Assets |
+| 🔧 Git | Version Control |
 
-🐍 Python
+---
 
-Backend programming
+## 🔄 Basic Workflow
 
-🌐 Django
-
-Web framework
-
-🖥️ HTML
-
-Page structure
-
-🎨 CSS
-
-User interface styling
-
-🗄️ SQLite / Database
-
-Data storage
-
-🔐 Django Authentication
-
-User authentication
-
-📁 Django Static & Media
-
-Static files and uploaded images
-
-🔧 Git & GitHub
-
-Version control
-
-⚙️ Installation & Setup
-
-1. Clone the repository
-
-git clone <your-repository-url>
-cd assignment-8
-
-2. Create a virtual environment
-
-python -m venv venv
-
-3. Activate the virtual environment
-
-Windows:
-
-venv\Scripts\activate
-
-macOS / Linux:
-
-source venv/bin/activate
-
-4. Install dependencies
-
-pip install -r requirements.txt
-
-5. Apply migrations
-
-python manage.py migrate
-
-6. Create a superuser
-
-python manage.py createsuperuser
-
-Follow the terminal instructions to create the admin account.
-
-7. Run the development server
-
-python manage.py runserver
-
-Then open:
-
-http://127.0.0.1:8000/
-
-🔄 Basic Workflow
-
+```text
              ┌──────────────────┐
              │      User        │
              └────────┬─────────┘
@@ -195,74 +118,137 @@ http://127.0.0.1:8000/
               │ Browse Reports  │
               │  & Find Items   │
               └─────────────────┘
-📁 Important Django Apps
+```
 
-authentication
+---
 
-Handles user authentication and account-related functionality.
+## ⚙️ Installation & Setup
 
-lost_items
+### 1. Clone the Repository
 
-Contains the functionality for creating and displaying lost item reports.
+```bash
+git clone <your-repository-url>
+cd assignment-8
+```
 
-found_items
+### 2. Create a Virtual Environment
 
-Contains the functionality for creating and displaying found item reports.
+```bash
+python -m venv venv
+```
 
-main_campus
+### 3. Activate the Virtual Environment
 
-Contains the main project pages and common campus-related functionality.
+#### Windows
 
-🔒 Security
+```bash
+venv\Scripts\activate
+```
 
-For production deployment, make sure to:
+#### macOS / Linux
 
-Set DEBUG = False
+```bash
+source venv/bin/activate
+```
 
-Configure ALLOWED_HOSTS
+### 4. Install Dependencies
 
-Keep the Django SECRET_KEY private
+```bash
+pip install -r requirements.txt
+```
 
-Configure a production database
+### 5. Apply Database Migrations
 
-Configure secure static/media file serving
+```bash
+python manage.py migrate
+```
 
-Never commit passwords, API keys, or secret configuration files
+### 6. Run the Development Server
 
-🚀 Future Improvements
+```bash
+python manage.py runserver
+```
 
-Some possible future improvements include:
+Then open the following address in your browser:
 
-🤖 AI-powered item search
+```text
+http://127.0.0.1:8000/
+```
 
-🔍 Advanced search and filtering
+---
 
-📍 Location-based item matching
+## 📁 Django Apps
 
-🧠 Automatic matching between lost and found reports
+### `lost_items`
 
-📧 Email notifications
+This app handles lost item reports.
 
-🔔 Real-time notifications
+Users can submit information about items they have lost and view available lost item reports.
 
-📱 Responsive mobile interface
+### `found_items`
 
-🖼️ AI-based image similarity search
+This app handles found item reports.
 
-👤 User dashboard
+Users can submit information about items they have found and view available found item reports.
 
-📊 Admin analytics and reporting
+### `main_campus`
 
-🎯 Project Goal
+This app contains the main pages and common functionality of the campus project.
 
-The goal of this project is to create a simple, organized, and user-friendly campus platform where lost and found items can be reported, discovered, and managed efficiently.
+### `authentication`
 
-👨‍💻 Author
+The authentication system is currently **under development** and is planned for a future version.
 
-Abdullah Al Noman
+---
 
-Built with ❤️ using Python & Django.
+## 🔐 Authentication Status
 
-📄 License
+Authentication functionality has **not been implemented yet**.
 
-This project is created for educational and project-development purposes.
+Future authentication features may include:
+
+- User Registration
+- User Login
+- User Logout
+- User Profile
+- User-specific Lost Item Reports
+- User-specific Found Item Reports
+
+---
+
+## 🚀 Future Improvements
+
+The project can be improved by adding the following features:
+
+- 🔐 User Registration and Login
+- 👤 User Profile and Dashboard
+- 🔎 Advanced Search
+- 🏷️ Category-based Filtering
+- 📍 Location-based Search
+- 🤖 AI-powered Item Search
+- 🧠 Automatic Lost & Found Item Matching
+- 🖼️ AI-based Image Similarity Search
+- 📧 Email Notifications
+- 🔔 Real-time Notifications
+- 📱 Fully Responsive Mobile Interface
+- 📊 Admin Dashboard and Analytics
+
+---
+
+## 🎯 Project Goal
+
+The main goal of this project is to create a **simple, organized, and user-friendly campus Lost & Found platform** where lost and found items can be reported, viewed, and managed efficiently.
+
+---
+
+## 👨‍💻 Author
+
+**Abdullah Al Noman**
+
+Built with ❤️ using **Python & Django**.
+
+---
+
+## 📄 License
+
+This project is developed for **educational and academic purposes**.
