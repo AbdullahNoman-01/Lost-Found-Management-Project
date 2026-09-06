@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'css/found_item_delete.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+   <div class="delete-page">
+      <div class="container">
+         <div class="delete-card">
+
+
+               <!-- ================= ICON ================= -->
+
+               <div class="delete-icon">
+
+                  <i class="bi bi-trash3-fill"></i>
+
+               </div>
+
+
+               <!-- ================= TITLE ================= -->
+
+               <h1>
+                  Delete Post?
+               </h1>
+
+
+               <p class="warning-text">
+                  Are you sure you want to delete this lost item post?
+               </p>
+
+
+               <!-- ================= ITEM INFO ================= -->
+
+               <div class="item-preview">
+
+                  {% if found_item.image %}
+
+                     <div class="item-image">
+
+                           <img
+                              src="{{ found_item.image.url }}"
+                              alt="{{ found_item.item_name }}"
+                           >
+
+                     </div>
+
+                  {% else %}
+
+                     <div class="item-image no-image">
+
+                           <i class="bi bi-image"></i>
+
+                     </div>
+
+                  {% endif %}
+
+
+                  <div class="item-info">
+
+                     <h3>
+                           {{ found_item.item_name }}
+                     </h3>
+
+                     <p>
+                           {{ found_item.category|default:"Lost Item" }}
+                     </p>
+
+                     <span>
+                           <i class="bi bi-geo-alt-fill"></i>
+
+                           {{ found_item.location_found }}
+                     </span>
+
+                  </div>
+
+               </div>
+
+
+               <!-- ================= WARNING ================= -->
+
+               <div class="warning-box">
+
+                  <i class="bi bi-exclamation-triangle-fill"></i>
+
+                  <div>
+
+                     <strong>
+                           This action cannot be undone.
+                     </strong>
+
+                     <p>
+                           Once you delete this post, all information
+                           related to this item will be permanently removed.
+                     </p>
+
+                  </div>
+
+               </div>
+
+
+               <!-- ================= BUTTONS ================= -->
+
+               <form method="POST">
+
+                  {% csrf_token %}
+
+                  <div class="action-buttons">
+
+
+                     <a
+                           href="{% url 'found_detail' found_item.pk %}"
+                           class="cancel-btn"
+                     >
+
+                           <i class="bi bi-arrow-left"></i>
+
+                           Cancel
+
+                     </a>
+
+
+                     <button
+                           type="submit"
+                           class="delete-btn"
+                     >
+
+                           <i class="bi bi-trash3-fill"></i>
+
+                           Delete Post
+
+                     </button>
+
+
+                  </div>
+
+               </form>
+
+
+               <!-- ================= BACK LINK ================= -->
+
+               <a
+                  href="{% url 'report_lost_item_read' %}"
+                  class="back-link"
+               >
+
+                  <i class="bi bi-grid"></i>
+
+                  Back to All Lost Items
+
+               </a>
+
+
+         </div>
+
+      </div>
+
+   </div>
+
+{% endblock content %}

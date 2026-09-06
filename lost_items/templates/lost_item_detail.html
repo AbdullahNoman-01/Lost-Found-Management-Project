@@ -1,0 +1,272 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'css/lost_item_detail.css' %}">
+{% endblock extra_css %}
+
+
+{% block content %}
+
+   {% if messages %}
+      {% for message in messages %}
+         <div class="custom-message">
+               <i class="bi bi-check-circle-fill"></i>
+               <span>{{ message }}</span>
+
+               <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
+               ></button>
+         </div>
+      {% endfor %}
+   {% endif %}
+   <div class="detail-page">
+
+      <!-- ================= HEADER ================= -->
+
+      <div class="container">
+
+         <div class="top-header">
+
+               <a
+                  href="{% url 'report_lost_item_read' %}"
+                  class="back-link"
+               >
+                  <i class="bi bi-arrow-left"></i>
+                  Back to Lost Items
+               </a>
+
+
+               <h1>
+                  {{ item.item_name }}
+               </h1>
+
+               <p>
+                  Lost item details and information
+               </p>
+
+         </div>
+
+
+         <!-- ================= CONTENT ================= -->
+
+         <div class="row g-4 align-items-start">
+
+               <!-- IMAGE -->
+
+               <div class="col-lg-5">
+
+                  <div class="image-card">
+
+                     {% if item.image %}
+
+                           <img
+                              src="{{ item.image.url }}"
+                              alt="{{ item.item_name }}"
+                           >
+
+                     {% else %}
+
+                           <div class="no-image">
+
+                              <i class="bi bi-image"></i>
+
+                              <span>No Image Available</span>
+
+                           </div>
+
+                     {% endif %}
+
+
+                     <!-- STATUS -->
+
+                     {% if item.type == "Found" %}
+
+                           <span class="detail-status found">
+                              <i class="bi bi-check-circle-fill"></i>
+                              Found
+                           </span>
+
+                     {% else %}
+
+                           <span class="detail-status lost">
+                              <i class="bi bi-exclamation-circle-fill"></i>
+                              Missing
+                           </span>
+
+                     {% endif %}
+
+                  </div>
+
+               </div>
+
+
+               <!-- RIGHT SIDE -->
+
+               <div class="col-lg-7">
+
+                  <!-- DESCRIPTION -->
+
+                  <div class="info-card description-card">
+
+                     <h3>
+                           <i class="bi bi-card-text"></i>
+                           Description
+                     </h3>
+
+                     <p>
+                           {{ item.description }}
+                     </p>
+
+                  </div>
+
+
+                  <!-- INFORMATION GRID -->
+
+                  <div class="row g-3 mt-0">
+
+
+                     <!-- DATE -->
+
+                     <div class="col-md-6">
+
+                           <div class="info-card small-card">
+
+                              <div class="info-title">
+
+                                 <i class="bi bi-calendar-event"></i>
+
+                                 <span>Date Lost</span>
+
+                              </div>
+
+                              <p>
+                                 {{ item.date_lost|date:"F d, Y" }}
+                              </p>
+
+                           </div>
+
+                     </div>
+
+
+                     <!-- LOCATION -->
+
+                     <div class="col-md-6">
+
+                           <div class="info-card small-card">
+
+                              <div class="info-title">
+
+                                 <i class="bi bi-geo-alt-fill"></i>
+
+                                 <span>Location</span>
+
+                              </div>
+
+                              <p>
+                                 {{ item.location_lost }}
+                              </p>
+
+                           </div>
+
+                     </div>
+
+
+                     <!-- CATEGORY -->
+
+                     <div class="col-md-6">
+
+                           <div class="info-card small-card">
+
+                              <div class="info-title">
+
+                                 <i class="bi bi-tag-fill"></i>
+
+                                 <span>Category</span>
+
+                              </div>
+
+                              <p>
+                                 {{ item.category|default:"Not specified" }}
+                              </p>
+
+                           </div>
+
+                     </div>
+
+
+                     <!-- CONTACT -->
+
+                     <div class="col-md-6">
+
+                           <div class="info-card small-card">
+
+                              <div class="info-title">
+
+                                 <i class="bi bi-person-fill"></i>
+
+                                 <span>Contact Info</span>
+
+                              </div>
+
+                              <p>
+                                 {{ item.contact_info }}
+                              </p>
+
+                           </div>
+
+                     </div>
+
+                  </div>
+
+
+                  <!-- ================= ACTION BOX ================= -->
+
+                  <div class="action-card">
+
+                     <h3>
+                           Manage This Post
+                     </h3>
+
+                     <p>
+                           You can update the information or remove this
+                           lost item post.
+                     </p>
+
+
+                     <div class="action-buttons">
+
+                           <a
+                              href="{% url 'lost_update' item.pk %}"
+                              class="update-btn"
+                           >
+                              <i class="bi bi-pencil-square"></i>
+                              Update Post
+                           </a>
+
+
+                           <a
+                              href="{% url 'lost_delete' item.pk %}"
+                              class="delete-btn"
+                           >
+                              <i class="bi bi-trash3-fill"></i>
+                              Delete Post
+                           </a>
+
+                     </div>
+
+                  </div>
+
+               </div>
+
+         </div>
+
+      </div>
+
+   </div>
+{% endblock content %}
+

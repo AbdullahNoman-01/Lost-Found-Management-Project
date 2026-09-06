@@ -1,0 +1,734 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock extra_css %}
+
+
+{% block content %}
+
+{% comment %} hero section  {% endcomment %}
+<section class="hero-section">
+    <div id="item11">
+      <div class="glow glow-blue"></div>
+      <div class="glow glow-cyan"></div>
+      <span class="particle p1"></span>
+      <span class="particle p2"></span>
+      <span class="particle p3"></span>
+      <span class="particle p4"></span>
+      <span class="particle p5"></span>
+      <span class="particle p6"></span>
+      <div class="ribbon ribbon-one"></div>
+      <div class="ribbon ribbon-two"></div>
+      <div class="ribbon ribbon-three"></div>
+      <!-- Left Decoration -->
+      <div class="side-line left-line">
+         <div class="line-dot"></div>
+         <div class="line-middle"></div>
+         <div class="line-dot bottom-dot"></div>
+      </div>
+      <!-- Right Decoration -->
+      <div class="side-line right-line">
+         <div class="line-dot"></div>
+         <div class="line-middle"></div>
+         <div class="line-dot bottom-dot"></div>
+      </div>
+      <!-- Main Content -->
+      <div class="container position-relative ">
+         <div class="hero-content text-center">
+               <a href="{% url "report_lost_item" %}" class="report-badge">
+                  <span class="badge-icon">
+                     🔔
+                  </span>
+                  <span>
+                     Lost something? Report here!
+                  </span>
+                  <span class="badge-arrow">
+                     →
+                  </span>
+               </a>
+               <h1 class="hero-title">
+                  <span class="white-text">
+                     Welcome to
+                  </span>
+                  <br>
+                  <span class="gradient-text">
+                     Lost and Found
+                  </span>
+                  <br>
+                  <span class="white-text">
+                     Management
+                  </span>
+               </h1>
+               <!-- Description -->
+               <p class="hero-description">
+
+                  Lost and Found Management is your reliable partner
+                  in handling lost items. Whether you've misplaced your
+                  belongings or found something left behind, we're here
+                  to assist with our modern, efficient system.
+
+               </p>
+
+               <div class="hero-buttons">
+                  <a href="{% url "report_lost_item_read" %}" class="hero-btn lost-btn">
+                     <span class="btn-icon">
+                           📋
+                     </span>
+                     <span>
+                           View a Lost Item
+                     </span>
+                     <span class="btn-arrow">
+                           →
+                     </span>
+                  </a>
+                  <a href="{% url "report_found_item_viewer" %}" class="hero-btn found-btn">
+                     <span class="btn-icon">
+                           🔍
+                     </span>
+                     <span>
+                           View a Found Item
+                     </span>
+                     <span class="btn-arrow">
+                           →
+                     </span>
+                  </a>
+               </div>
+         </div>
+      </div>
+    </div>
+
+</section>
+
+
+
+{% comment %} services section  {% endcomment %}
+<section class="services-section">
+
+    <div class="container">
+
+        <!-- Section Heading -->
+        <div class="services-heading text-center">
+            <h1>
+                Our <span>Services</span>
+            </h1>
+
+            <p>
+                Comprehensive lost and found management solutions designed to help you
+                <br class="d-none d-md-block">
+                recover what matters most
+            </p>
+        </div>
+
+
+        <!-- Services Cards -->
+        <div class="row g-4">
+
+            <!-- Card 1 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="fa-regular fa-clipboard"></i>
+                    </div>
+
+                    <h3>Lost Item Reporting</h3>
+
+                    <p>
+                        Easily report lost items by providing detailed descriptions,
+                        locations, and images, helping to track down your missing
+                        belongings.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <!-- Card 2 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card active">
+
+                    <div class="service-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                    <h3>Search for Lost Items</h3>
+
+                    <p>
+                        Quickly search the database for your lost items using keywords,
+                        categories, or locations to find matches,or locations to find matches.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <!-- Card 3 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <h3>Location-Based Services</h3>
+
+                    <p>
+                        View and track lost and found items within specific geographic
+                        areas, focusing your search on the most relevant locations.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <!-- Card 4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+
+                    <h3>Help Desk Support</h3>
+
+                    <p>
+                        Get assistance with your lost or found reports, claims, or other,reports, claims, or other queries through our dedicated help desk service.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <!-- Card 5 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <h3>Data Encryption and Privacy</h3>
+
+                    <p>
+                        Protect your information with industry-standard encryption,
+                        ensuring your personal data remains secure and confidential.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <!-- Card 6 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+
+                    <h3>Item Claiming</h3>
+
+                    <p>
+                        Verify and claim found items securely through a streamlined
+                        process, ensuring that only the rightful owner can retrieve
+                        the item.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% comment %} impact section {% endcomment %}
+<section class="impact-section">
+
+    <div class="container">
+
+        <!-- Heading -->
+        <div class="impact-heading text-center">
+
+            <h2>
+                Making
+                <span>Connections</span>
+                That Matter
+            </h2>
+
+            <p>
+                Every day, we help reunite people with their lost belongings
+                and create meaningful<br class="d-none d-md-block">
+                connections in our community
+            </p>
+
+        </div>
+        <div class="row g-4 justify-content-center">
+            <!-- Card 1 -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="impact-card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div class="card-icon second-icon">
+                        💖
+                    </div>
+                    <h3>11,342</h3>
+                    <div class="trend">
+                        ↗
+                    </div>
+                    <h4>Items Reunited</h4>
+                    <p>
+                        Successfully returned to owners
+                    </p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="impact-card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="card-icon second-icon">
+                        🧑‍🤝‍🧑
+                    </div>
+                    <h3>16,350+</h3>
+                    <div class="trend">
+                        ↗
+                    </div>
+                    <h4>Happy Users</h4>
+                    <p>
+                        Active community members
+                    </p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="impact-card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div class="card-icon second-icon">
+                        ⚡
+                    </div>
+                    <h3>3.6 hrs</h3>
+                    <div class="trend">
+                        ↗
+                    </div>
+                    <h4>Average Return Time</h4>
+                    <p>
+                        How fast items get claimed
+                    </p>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="impact-card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div class="card-icon second-icon">
+                        🌍
+                    </div>
+                    <h3>210+</h3>
+                    <div class="trend">
+                        ↗
+                    </div>
+                    <h4>Cities Covered</h4>
+                    <p>
+                        Locations worldwide
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% comment %} found item {% endcomment %}
+<div class="lost-wrapper">
+
+      <div class="container">
+
+         <div class="page-header text-center">
+
+               <div class="header-icon">
+                  <i class="bi bi-search"></i>
+               </div>
+
+               <h1>All Found Items</h1>
+
+               <p>
+                  Discover items that have been found and reported by our community
+               </p>
+
+         </div>
+
+
+         <!-- ================= RESULT ================= -->
+
+         <div class="result-area">
+               <span>
+                  Showing
+                  <strong>{{ found_items|length }}</strong>
+                  lost items
+               </span>
+               <div></div>
+         </div>
+
+
+         <!-- ================= ITEMS ================= -->
+
+         <div class="row g-4">
+
+               {% for item in found_items %}
+
+               <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+
+                  <div class="lost-card">
+
+                     <!-- IMAGE -->
+
+                     <div class="card-image">
+
+                           {% if item.image %}
+
+                              <img
+                                 src="{{ item.image.url }}"
+                                 alt="{{ item.item_name }}"
+                              >
+
+                           {% else %}
+
+                              <div class="default-image">
+
+                                 <i class="bi bi-image"></i>
+
+                                 <span>No Image</span>
+
+                              </div>
+
+                           {% endif %}
+
+
+                           <!-- TYPE -->
+
+                           {% if item.type == "Found" %}
+
+                              <span class="status found">
+                                 <i class="bi bi-check-circle-fill"></i>
+                                 Found
+                              </span>
+
+                           {% else %}
+
+                              <span class="status lost">
+                                 <i class="bi bi-exclamation-triangle-fill"></i>
+                                 Lost
+                              </span>
+
+                           {% endif %}
+
+                     </div>
+
+
+                     <!-- CARD BODY -->
+
+                     <div class="card-content">
+
+                           <h3>
+                              {{ item.item_name }}
+                           </h3>
+
+
+                           {% if item.category %}
+
+                           <span class="category">
+                              {{ item.category }}
+                           </span>
+
+                           {% endif %}
+
+
+                           <p class="description">
+                              {{ item.description|truncatechars:65 }}
+                           </p>
+
+
+                           <!-- DATE -->
+
+                           <div class="info">
+
+                              <div class="info-item">
+
+                                 <i class="bi bi-calendar-event"></i>
+
+                                 <span>
+                                       {{ item.date_found|date:"Y-m-d" }}
+                                 </span>
+
+                              </div>
+
+
+                              <!-- LOCATION -->
+
+                              <div class="info-item">
+
+                                 <i class="bi bi-geo-alt-fill"></i>
+
+                                 <span>
+                                       {{ item.location_found }}
+                                 </span>
+
+                              </div>
+
+                           </div>
+
+
+                           <!-- DETAILS -->
+
+                           <a
+                              href="{% url 'found_detail' item.pk %}"
+                              class="details-btn"
+                           >
+                              View Details
+                              <i class="bi bi-arrow-right"></i>
+                           </a>
+
+                     </div>
+
+                  </div>
+
+               </div>
+
+               {% empty %}
+
+               <!-- NO DATA -->
+
+               <div class="col-12">
+
+                  <div class="empty-box">
+
+                     <div class="empty-icon">
+                           <i class="bi bi-search"></i>
+                     </div>
+
+                     <h3>No Lost Items Found</h3>
+
+                     <p>
+                           There are currently no lost items available.
+                     </p>
+
+                  </div>
+
+               </div>
+
+               {% endfor %}
+
+         </div>
+
+      </div>
+
+   </div>
+
+   
+
+{% comment %} lost item {% endcomment %}
+<div class="lost-wrapper">
+
+      <div class="container">
+
+         <div class="page-header text-center">
+
+               <div class="header-icon">
+                  <i class="bi bi-search"></i>
+               </div>
+
+               <h1>All Lost Items</h1>
+
+               <p>
+                  Help reunite people with their lost belongings
+               </p>
+
+         </div>
+
+         <!-- ================= RESULT ================= -->
+
+         <div class="result-area">
+               <span>
+                  Showing
+                  <strong>{{ lost_items|length }}</strong>
+                  lost items
+               </span>
+               <div></div>
+         </div>
+
+
+         <!-- ================= ITEMS ================= -->
+
+         <div class="row g-4">
+
+               {% for item in lost_items %}
+
+               <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+
+                  <div class="lost-card">
+
+                     <!-- IMAGE -->
+
+                     <div class="card-image">
+
+                           {% if item.image %}
+
+                              <img
+                                 src="{{ item.image.url }}"
+                                 alt="{{ item.item_name }}"
+                              >
+
+                           {% else %}
+
+                              <div class="default-image">
+
+                                 <i class="bi bi-image"></i>
+
+                                 <span>No Image</span>
+
+                              </div>
+
+                           {% endif %}
+
+
+                           <!-- TYPE -->
+
+                           {% if item.type == "Found" %}
+
+                              <span class="status found">
+                                 <i class="bi bi-check-circle-fill"></i>
+                                 Found
+                              </span>
+
+                           {% else %}
+
+                              <span class="status lost">
+                                 <i class="bi bi-exclamation-triangle-fill"></i>
+                                 Lost
+                              </span>
+
+                           {% endif %}
+
+                     </div>
+
+
+                     <!-- CARD BODY -->
+
+                     <div class="card-content">
+
+                           <h3>
+                              {{ item.item_name }}
+                           </h3>
+
+
+                           {% if item.category %}
+
+                           <span class="category">
+                              {{ item.category }}
+                           </span>
+
+                           {% endif %}
+
+
+                           <p class="description">
+                              {{ item.description|truncatechars:65 }}
+                           </p>
+
+
+                           <!-- DATE -->
+
+                           <div class="info">
+
+                              <div class="info-item">
+
+                                 <i class="bi bi-calendar-event"></i>
+
+                                 <span>
+                                       {{ item.date_lost|date:"Y-m-d" }}
+                                 </span>
+
+                              </div>
+
+
+                              <!-- LOCATION -->
+
+                              <div class="info-item">
+
+                                 <i class="bi bi-geo-alt-fill"></i>
+
+                                 <span>
+                                       {{ item.location_lost }}
+                                 </span>
+
+                              </div>
+
+                           </div>
+
+
+                           <!-- DETAILS -->
+
+                           <a
+                              href="{% url 'lost_detail' item.pk %}"
+                              class="details-btn"
+                           >
+                              View Details
+                              <i class="bi bi-arrow-right"></i>
+                           </a>
+
+                     </div>
+
+                  </div>
+
+               </div>
+
+               {% empty %}
+
+               <!-- NO DATA -->
+
+               <div class="col-12">
+
+                  <div class="empty-box">
+
+                     <div class="empty-icon">
+                           <i class="bi bi-search"></i>
+                     </div>
+
+                     <h3>No Lost Items Found</h3>
+
+                     <p>
+                           There are currently no lost items available.
+                     </p>
+
+                  </div>
+
+               </div>
+
+               {% endfor %}
+
+         </div>
+
+      </div>
+
+   </div>
+
+
+{% comment %} about us {% endcomment %}
+{% include "about.html" %}
+
+
+{% block extra_js %}
+   <script src="{% static 'js/home.js' %}"></script>
+{% endblock extra_js %}
+
+{% endblock content %}

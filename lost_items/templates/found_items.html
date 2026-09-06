@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'css/found_items.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+   <div class="form-container">
+      <h1>Report Found Item</h1>
+         <form method="POST">
+               {% csrf_token %}
+               <div class="form-grid">
+
+                  <div class="form-group">
+                     <label for="{{ form.item_name.id_for_label }}">
+                           Found item name
+                     </label>
+                     {{ form.item_name }}
+                  </div>
+                  <div class="form-group">
+                     <label for="{{ form.description.id_for_label }}">
+                           Description
+                     </label>
+                     {{ form.description }}
+                  </div>
+                  <div class="form-group">
+                     <label for="{{ form.image_url.id_for_label }}">
+                           Image url
+                     </label>
+                     {{ form.image_url }}
+                  </div>
+                  <div class="form-group">
+                     <label for="{{ form.location.id_for_label }}">
+                           Location
+                     </label>
+                     {{ form.location }}
+                  </div>
+                  <div class="form-group">
+                     <label for="{{ form.claim_process.id_for_label }}">
+                           Claim Process
+                     </label>
+                     {{ form.claim_process }}
+                  </div>
+                  <div class="form-group">
+                     <label for="{{ form.date.id_for_label }}">
+                           Date
+                     </label>
+                     {{ form.date }}
+                  </div>
+                  <div class="form-group category-group">
+                     <label for="{{ form.category.id_for_label }}">
+                           Category
+                     </label>
+                     {{ form.category }}
+                     {% if form.category.errors %}
+                           <div class="error-message">
+                              {{ form.category.errors.0 }}
+                           </div>
+                     {% endif %}
+                  </div>
+               </div>
+               <button type="submit" class="submit-btn">
+                  Submit Found Item
+               </button>
+         </form>
+   </div>
+
+{% endblock content %}

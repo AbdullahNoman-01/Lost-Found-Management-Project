@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'css/found_form.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+      {% if messages %}
+         {% for message in messages %}
+            <div class="custom-message">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>{{ message }}</span>
+
+                  <button
+                     type="button"
+                     class="btn-close"
+                     data-bs-dismiss="alert"
+                     aria-label="Close"
+                  ></button>
+            </div>
+         {% endfor %}
+      {% endif %}
+<div class="form-page">
+
+    <div class="form-container">
+
+        <!-- Header -->
+        <div class="form-header">
+            <h1>Report Found Item</h1>
+            <p>
+                Found something that belongs to someone else?
+                Submit the details below to help return it.
+            </p>
+        </div>
+
+        <!-- Form -->
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ form|crispy }}
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">
+                    Report Found Item
+                </button>
+
+                <a href="/" class="cancel-btn">
+                    Cancel
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock content %}

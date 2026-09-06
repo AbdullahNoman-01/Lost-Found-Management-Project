@@ -1,0 +1,314 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'css/lost_items_view.css' %}">
+{% endblock extra_css %}
+
+
+{% block content %}
+
+   {% if messages %}
+      {% for message in messages %}
+         <div class="custom-message">
+               <i class="bi bi-check-circle-fill"></i>
+               <span>{{ message }}</span>
+
+               <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close">
+               </button>
+         </div>
+      {% endfor %}
+   {% endif %}
+   <div class="lost-wrapper">
+
+      <div class="container">
+
+         <div class="page-header text-center">
+
+               <div class="header-icon">
+                  <i class="bi bi-search"></i>
+               </div>
+
+               <h1>All Lost Items</h1>
+
+               <p>
+                  Help reunite people with their lost belongings
+               </p>
+
+         </div>
+
+
+         <!-- ================= SEARCH ================= -->
+
+         <div class="search-card">
+
+               <form method="GET">
+
+                  <div class="row g-3 align-items-center">
+
+                     <div class="col-lg-9 col-md-8">
+
+                           <div class="search-input">
+
+                              <i class="bi bi-search"></i>
+
+                              <input
+                                 type="text"
+                                 name="search"
+                                 placeholder="Search by name, location, or description..."
+                                 value="{{ request.GET.search|default:'' }}"
+                              >
+
+                           </div>
+
+                     </div>
+
+
+                     <div class="col-lg-3 col-md-4">
+
+                           <button type="submit" class="search-btn">
+                              <i class="bi bi-search"></i>
+                              Search
+                           </button>
+
+                     </div>
+
+                  </div>
+
+               </form>
+
+
+               <!-- Sort -->
+
+               <div class="sort-area">
+                  <i class="bi bi-funnel-fill"></i>
+
+                  <form method="GET">
+                     <input
+                           type="hidden"
+                           name="search"
+                           value="{{ request.GET.search|default:'' }}"
+                     >
+
+                     <select
+                           class="sort-select"
+                           name="sort"
+                           onchange="this.form.submit();"
+                     >
+                           <option
+                              value="item_name"
+                              {% if request.GET.sort == "item_name" or not request.GET.sort %}
+                                 selected
+                              {% endif %}
+                           >
+                              Name (A-Z)
+                           </option>
+
+                           <option
+                              value="-item_name"
+                              {% if request.GET.sort == "-item_name" %}
+                                 selected
+                              {% endif %}
+                           >
+                              Name (Z-A)
+                           </option>
+
+                           <option
+                              value="-date_lost"
+                              {% if request.GET.sort == "-date_lost" %}
+                                 selected
+                              {% endif %}
+                           >
+                              Newest First
+                           </option>
+
+                           <option
+                              value="date_lost"
+                              {% if request.GET.sort == "date_lost" %}
+                                 selected
+                              {% endif %}
+                           >
+                              Oldest First
+                           </option>
+                     </select>
+                  </form>
+               </div>
+
+               
+
+         </div>
+
+
+         <!-- ================= RESULT ================= -->
+
+         <div class="result-area">
+               <span>
+                  Showing
+                  <strong>{{ lost_items|length }}</strong>
+                  lost items
+               </span>
+               <div></div>
+         </div>
+
+
+         <!-- ================= ITEMS ================= -->
+
+         <div class="row g-4">
+
+               {% for item in lost_items %}
+
+               <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+
+                  <div class="lost-card">
+
+                     <!-- IMAGE -->
+
+                     <div class="card-image">
+
+                           {% if item.image %}
+
+                              <img
+                                 src="{{ item.image.url }}"
+                                 alt="{{ item.item_name }}"
+                              >
+
+                           {% else %}
+
+                              <div class="default-image">
+
+                                 <i class="bi bi-image"></i>
+
+                                 <span>No Image</span>
+
+                              </div>
+
+                           {% endif %}
+
+
+                           <!-- TYPE -->
+
+                           {% if item.type == "Found" %}
+
+                              <span class="status found">
+                                 <i class="bi bi-check-circle-fill"></i>
+                                 Found
+                              </span>
+
+                           {% else %}
+
+                              <span class="status lost">
+                                 <i class="bi bi-exclamation-triangle-fill"></i>
+                                 Lost
+                              </span>
+
+                           {% endif %}
+
+                     </div>
+
+
+                     <!-- CARD BODY -->
+
+                     <div class="card-content">
+
+                           <h3>
+                              {{ item.item_name }}
+                           </h3>
+
+
+                           {% if item.category %}
+
+                           <span class="category">
+                              {{ item.category }}
+                           </span>
+
+                           {% endif %}
+
+
+                           <p class="description">
+                              {{ item.description|truncatechars:65 }}
+                           </p>
+
+
+                           <!-- DATE -->
+
+                           <div class="info">
+
+                              <div class="info-item">
+
+                                 <i class="bi bi-calendar-event"></i>
+
+                                 <span>
+                                       {{ item.date_lost|date:"Y-m-d" }}
+                                 </span>
+
+                              </div>
+
+
+                              <!-- LOCATION -->
+
+                              <div class="info-item">
+
+                                 <i class="bi bi-geo-alt-fill"></i>
+
+                                 <span>
+                                       {{ item.location_lost }}
+                                 </span>
+
+                              </div>
+
+                           </div>
+
+
+                           <!-- DETAILS -->
+
+                           <a
+                              href="{% url 'lost_detail' item.pk %}"
+                              class="details-btn"
+                           >
+                              View Details
+                              <i class="bi bi-arrow-right"></i>
+                           </a>
+
+                     </div>
+
+                  </div>
+
+               </div>
+
+               {% empty %}
+
+               <!-- NO DATA -->
+
+               <div class="col-12">
+
+                  <div class="empty-box">
+
+                     <div class="empty-icon">
+                           <i class="bi bi-search"></i>
+                     </div>
+
+                     <h3>No Lost Items Found</h3>
+
+                     <p>
+                           There are currently no lost items available.
+                     </p>
+
+                  </div>
+
+               </div>
+
+               {% endfor %}
+
+         </div>
+
+      </div>
+
+   </div>
+
+{% endblock content %}
+
+

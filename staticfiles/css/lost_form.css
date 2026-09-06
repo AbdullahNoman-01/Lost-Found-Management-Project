@@ -1,0 +1,506 @@
+/* =========================================
+   MODERN LOST ITEM FORM
+========================================= */
+
+body {
+    background:
+        radial-gradient(circle at 10% 10%, rgba(13, 110, 253, 0.12), transparent 30%),
+        radial-gradient(circle at 90% 90%, rgba(111, 66, 193, 0.12), transparent 30%),
+        #07193e;
+}
+
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.lost-item-form {
+    max-width: 780px !important;
+    margin: 55px auto !important;
+    padding: 42px !important;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 28px;
+
+    box-shadow:
+        0 25px 60px rgba(15, 23, 42, 0.10),
+        0 5px 15px rgba(15, 23, 42, 0.05);
+
+    backdrop-filter: blur(15px);
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Top gradient line */
+
+.lost-item-form::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        #0d6efd,
+        #6610f2,
+        #6f42c1
+    );
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.form-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+
+/* Icon */
+
+.form-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    font-size: 30px;
+
+    background: linear-gradient(
+        135deg,
+        #0d6efd,
+        #6610f2
+    );
+
+    box-shadow:
+        0 12px 25px rgba(13, 110, 253, 0.25);
+
+    transform: rotate(-3deg);
+
+    transition: 0.3s ease;
+}
+
+
+.form-icon:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+
+/* Heading */
+
+.form-header h1 {
+    margin: 0;
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.8px;
+
+    color: #111827;
+}
+
+
+/* Description */
+
+.form-header p {
+    margin-top: 10px;
+    margin-bottom: 0;
+
+    color: #6b7280;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   FORM BODY
+========================================= */
+
+.form-body {
+    padding: 5px 0;
+}
+
+
+/* Crispy form labels */
+
+.lost-item-form label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #374151;
+}
+
+
+/* Form group */
+
+.lost-item-form .mb-3 {
+    margin-bottom: 23px !important;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.lost-item-form input:not(
+    [type="checkbox"]
+):not(
+    [type="radio"]
+),
+.lost-item-form select,
+.lost-item-form textarea {
+
+    width: 100%;
+
+    min-height: 50px;
+
+    padding: 13px 16px;
+
+    border: 1.5px solid #e2e8f0;
+
+    border-radius: 13px;
+
+    background: #f8fafc;
+
+    color: #1e293b;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* Placeholder */
+
+.lost-item-form input::placeholder,
+.lost-item-form textarea::placeholder {
+    color: #9ca3af;
+}
+
+
+/* Focus */
+
+.lost-item-form input:focus,
+.lost-item-form select:focus,
+.lost-item-form textarea:focus {
+
+    outline: none;
+
+    background: #ffffff;
+
+    border-color: #0d6efd;
+
+    box-shadow:
+        0 0 0 4px rgba(13, 110, 253, 0.10),
+        0 5px 15px rgba(13, 110, 253, 0.06);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   TEXTAREA
+========================================= */
+
+.lost-item-form textarea {
+
+    min-height: 130px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   SELECT
+========================================= */
+
+.lost-item-form select {
+    cursor: pointer;
+}
+
+
+/* =========================================
+   FILE INPUT
+========================================= */
+
+.lost-item-form input[type="file"] {
+
+    padding: 10px;
+
+    background: #f8fafc;
+
+    cursor: pointer;
+}
+
+
+.lost-item-form input[type="file"]::file-selector-button {
+
+    border: none;
+
+    padding: 8px 14px;
+
+    margin-right: 10px;
+
+    border-radius: 8px;
+
+    background: #e8f1ff;
+
+    color: #0d6efd;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.lost-item-form input[type="file"]::file-selector-button:hover {
+    background: #d9e8ff;
+}
+
+
+/* =========================================
+   CHECKBOX
+========================================= */
+
+.lost-item-form input[type="checkbox"],
+.lost-item-form input[type="radio"] {
+
+    width: auto !important;
+
+    min-height: auto;
+
+    margin-right: 8px;
+
+    accent-color: #0d6efd;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   HELP TEXT
+========================================= */
+
+.lost-item-form .form-text {
+
+    margin-top: 7px;
+
+    font-size: 12px;
+
+    color: #94a3b8;
+}
+
+
+/* Required */
+
+.lost-item-form .asteriskField {
+    color: #ef4444;
+}
+
+
+/* Error */
+
+.lost-item-form .invalid-feedback {
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
+.submit-btn {
+
+    width: 100%;
+
+    min-height: 55px;
+
+    margin-top: 10px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #0d6efd,
+        #6610f2
+    );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(13, 110, 253, 0.25);
+
+    transition: all 0.3s ease;
+}
+
+
+/* Button arrow */
+
+.submit-btn .arrow {
+
+    font-size: 22px;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* Hover */
+
+.submit-btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(13, 110, 253, 0.32);
+
+    background: linear-gradient(
+        135deg,
+        #0b5ed7,
+        #5a0fcf
+    );
+}
+
+
+.submit-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+
+/* Click */
+
+.submit-btn:active {
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .lost-item-form {
+
+        margin: 35px 15px !important;
+
+        padding: 32px 24px !important;
+
+        border-radius: 22px;
+    }
+
+
+    .form-header h1 {
+        font-size: 29px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .lost-item-form {
+
+        margin: 20px 10px !important;
+
+        padding: 28px 18px !important;
+
+        border-radius: 18px;
+    }
+
+
+    .form-icon {
+
+        width: 60px;
+        height: 60px;
+
+        font-size: 25px;
+
+        border-radius: 17px;
+    }
+
+
+    .form-header h1 {
+        font-size: 25px;
+    }
+
+
+    .form-header p {
+        font-size: 13px;
+    }
+
+
+    .lost-item-form input:not(
+        [type="checkbox"]
+    ):not(
+        [type="radio"]
+    ),
+    .lost-item-form select,
+    .lost-item-form textarea {
+
+        font-size: 14px;
+
+        padding: 11px 13px;
+
+        border-radius: 11px;
+    }
+
+
+    .submit-btn {
+        min-height: 52px;
+        font-size: 15px;
+    }
+
+}

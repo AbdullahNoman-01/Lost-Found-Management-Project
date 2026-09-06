@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'css/lost_item_update.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+   <div class="update-page">
+      
+      <div class="container">
+
+         <div class="update-box">
+
+               <a
+                  href="{% url 'lost_detail' item.pk %}"
+                  class="back-link"
+               >
+                  ← Back to Details
+               </a>
+
+               <h1>Update Lost Item</h1>
+
+               <p class="subtitle">
+                  Update information about {{ item.item_name }}
+               </p>
+
+
+               <form
+                  method="POST"
+                  enctype="multipart/form-data"
+               >
+
+                  {% csrf_token %}
+
+                  {% for field in form %}
+
+                  <div class="form-group">
+
+                     <label>
+                           {{ field.label }}
+                     </label>
+
+                     {{ field }}
+
+                     {% if field.errors %}
+
+                           <div class="error">
+                              {{ field.errors }}
+                           </div>
+
+                     {% endif %}
+
+                  </div>
+
+                  {% endfor %}
+
+
+                  <div class="buttons">
+
+                     <a
+                           href="{% url 'lost_detail' item.pk %}"
+                           class="cancel-btn"
+                     >
+                           Cancel
+                     </a>
+
+                     <button
+                           type="submit"
+                           class="update-btn"
+                     >
+                           Update Post
+                     </button>
+
+                  </div>
+
+               </form>
+
+         </div>
+
+      </div>
+
+   </div>
+{% endblock content %}
