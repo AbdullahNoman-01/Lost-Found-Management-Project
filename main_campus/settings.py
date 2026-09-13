@@ -21,7 +21,9 @@ SECRET_KEY = 'django-insecure-@+9t1&la^dbwln2y+b!wmq9vz(!&zvdf5r-v4jn85ag@q$(6h&
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://lost-found-management-project.onrender.com",
+]
 
 # Application definition
 
