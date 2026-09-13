@@ -10,7 +10,7 @@
 
    {% if messages %}
       {% for message in messages %}
-         <div class="custom-message">
+         <div class="custom-message alert">
                <i class="bi bi-check-circle-fill"></i>
                <span>{{ message }}</span>
 
@@ -221,12 +221,20 @@
 
                            {% if item.category %}
 
-                           <span class="category">
-                              {{ item.category }}
-                           </span>
-
+                              <span class="category">
+                                 {{ item.category }}
+                              </span>
                            {% endif %}
 
+                           <!-- REPORTED BY --> 
+                           {% if item.user %} 
+                              <div class="reported-by"> 
+                                 <i class="bi bi-person-circle"></i> 
+                                 <span> Reported by 
+                                    <strong>{{ item.user.username }}</strong> 
+                                 </span> 
+                              </div> 
+                           {% endif %}
 
                            <p class="description">
                               {{ item.description|truncatechars:65 }}
@@ -308,6 +316,10 @@
       </div>
 
    </div>
+
+   {% block extra_js %}
+      <script src="{% static 'js/lost_items_view.js' %}"></script>
+   {% endblock extra_js %}
 
 {% endblock content %}
 

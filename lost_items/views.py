@@ -1,21 +1,34 @@
-from django.views.generic import DeleteView, DetailView, FormView, ListView, UpdateView 
+from django.views.generic import (
+    DeleteView,
+    DetailView,
+    FormView,
+    ListView,
+    UpdateView,
+)
 from django.urls import reverse_lazy
 from django.contrib import messages
-from .forms import ReportLostItemForm
-from .import models
-from django.shortcuts import redirect
 from django.db.models import Q
 
+from .forms import ReportLostItemForm
+from . import models
+
+
 class ReportLostItemView(FormView):
-    template_name = 'lost_items.html'
+    template_name = "lost_items.html"
     form_class = ReportLostItemForm
-    success_url = reverse_lazy('report_lost_item_read')
+    success_url = reverse_lazy("report_lost_item_read")
+
     def form_valid(self, form):
-        form.save()
+        # Logged-in user automatically assign হবে
+        report = form.save(commit=False)
+        report.user = self.request.user
+        report.save()
+
         messages.success(
             self.request,
             "Your lost item report has been submitted successfully! 🎉"
         )
+
         return super().form_valid(form)
 
 
@@ -23,6 +36,7 @@ class ReportLostItemRead(ListView):
     model = models.ReportLostItem
     template_name = "lost_items_view.html"
     context_object_name = "lost_items"
+
     def get_queryset(self):
         queryset = models.ReportLostItem.objects.all()
 
@@ -30,10 +44,10 @@ class ReportLostItemRead(ListView):
 
         if search:
             queryset = queryset.filter(
-                Q(item_name__icontains=search) |
-                Q(description__icontains=search) |
-                Q(location_lost__icontains=search) |
-                Q(category__icontains=search)
+                Q(item_name__icontains=search)
+                | Q(description__icontains=search)
+                | Q(location_lost__icontains=search)
+                | Q(category__icontains=search)
             )
 
         sort = self.request.GET.get("sort", "item_name")
@@ -67,26 +81,32 @@ class ReportLostItemUpdate(UpdateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
+
         messages.success(
             self.request,
             "Lost item updated successfully!"
         )
+
         return response
+
     def get_success_url(self):
         return reverse_lazy(
             "lost_detail",
             kwargs={"pk": self.object.pk}
         )
-    
+
+
 class ReportLostItemDelete(DeleteView):
     model = models.ReportLostItem
     template_name = "lost_item_delete.html"
     context_object_name = "item"
     success_url = reverse_lazy("report_lost_item_read")
+
     def form_valid(self, form):
         messages.success(
             self.request,
             "Lost item deleted successfully!"
         )
+
         return super().form_valid(form)
-    
+

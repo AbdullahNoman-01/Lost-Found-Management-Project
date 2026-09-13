@@ -220,6 +220,29 @@
                            </div>
 
                      </div>
+                     <!-- ================= REPORTED BY ================= --> 
+                      <div class="col-12"> 
+                        <div class="info-card reporter-card"> 
+                           <div class="reporter-icon"> 
+                              <i class="bi bi-person-circle"></i> 
+                           </div> 
+                           <div class="reporter-content"> 
+                              <span class="reporter-label"> Reported By </span> 
+                              <strong class="reporter-name"> 
+                                 {% if item.user.get_full_name %} 
+                                    {{ item.user.get_full_name }} 
+                                 {% else %} 
+                                    {{ item.user.username }} 
+                                 {% endif %} 
+                              </strong> 
+                              {% if item.user.email %} 
+                                 <span class="reporter-email"> 
+                                    <i class="bi bi-envelope"></i> 
+                                    {{ item.user.email }} 
+                                 </span> 
+                              {% endif %} 
+                           </div> 
+                        </div> </div>
 
                   </div>
 
@@ -238,25 +261,29 @@
                      </p>
 
 
+                 
                      <div class="action-buttons">
-
+                        {% if user.is_authenticated and item.user == user %}
                            <a
-                              href="{% url 'lost_update' item.pk %}"
-                              class="update-btn"
+                                 href="{% url 'lost_update' item.pk %}"
+                                 class="update-btn"
                            >
-                              <i class="bi bi-pencil-square"></i>
-                              Update Post
+                                 <i class="bi bi-pencil-square"></i>
+                                 Update Post
                            </a>
-
-
                            <a
-                              href="{% url 'lost_delete' item.pk %}"
-                              class="delete-btn"
+                                 href="{% url 'lost_delete' item.pk %}"
+                                 class="delete-btn"
                            >
-                              <i class="bi bi-trash3-fill"></i>
-                              Delete Post
+                                 <i class="bi bi-trash3-fill"></i>
+                                 Delete Post
                            </a>
-
+                        {% else %}
+                           <div class="owner-only-message"> 
+                              <i class="bi bi-info-circle-fill"></i> 
+                              <span>Only the post owner can update or delete this post.</span> 
+                           </div>
+                        {% endif %}
                      </div>
 
                   </div>

@@ -1,0 +1,488 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{% static 'authentications/css/profile.css' %}">
+{% endblock extra_css %}
+
+
+{% block content %}
+
+<!-- ========================================
+     Success / Error Messages
+======================================== -->
+{% if messages %}
+    {% for message in messages %}
+        <div class="custom-message alert" role="alert">
+            <i class="bi bi-check-circle-fill"></i>
+
+            <span>{{ message }}</span>
+
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                onclick="this.parentElement.remove()"
+                aria-label="Close">
+            </button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+<!-- ========================================
+     Profile Page
+======================================== -->
+<div class="profile-page">
+
+    <div class="profile-card">
+
+        <!-- ========================================
+             Profile Header
+        ======================================== -->
+        <div class="profile-header">
+
+            <!-- Avatar -->
+            <div class="profile-avatar">
+                {{ user.username|first|upper }}
+            </div>
+
+            <!-- Name -->
+            <h2>
+                {% if user.get_full_name %}
+                    {{ user.get_full_name }}
+                {% else %}
+                    {{ user.username }}
+                {% endif %}
+            </h2>
+
+            <!-- Username -->
+            <p>
+                @{{ user.username }}
+            </p>
+
+            <!-- Active Status -->
+            <span class="active-status">
+                <span class="status-dot"></span>
+                Active
+            </span>
+
+        </div>
+
+
+        <!-- ========================================
+             User Information
+        ======================================== -->
+        <div class="profile-info">
+
+            <!-- Username -->
+            <div class="info-item">
+                <span class="info-label">
+                    <i class="bi bi-person"></i>
+                    Username
+                </span>
+
+                <strong>
+                    {{ user.username }}
+                </strong>
+            </div>
+
+
+            <!-- First Name -->
+            <div class="info-item">
+                <span class="info-label">
+                    <i class="bi bi-person-badge"></i>
+                    First Name
+                </span>
+
+                <strong>
+                    {{ user.first_name|default:"Not provided" }}
+                </strong>
+            </div>
+
+
+            <!-- Last Name -->
+            <div class="info-item">
+                <span class="info-label">
+                    <i class="bi bi-person-badge"></i>
+                    Last Name
+                </span>
+
+                <strong>
+                    {{ user.last_name|default:"Not provided" }}
+                </strong>
+            </div>
+
+
+            <!-- Email -->
+            <div class="info-item">
+                <span class="info-label">
+                    <i class="bi bi-envelope"></i>
+                    Email
+                </span>
+
+                <strong>
+                    {{ user.email|default:"Not provided" }}
+                </strong>
+            </div>
+
+
+            <!-- Member Since -->
+            <div class="info-item">
+                <span class="info-label">
+                    <i class="bi bi-calendar3"></i>
+                    Member Since
+                </span>
+
+                <strong>
+                    {{ user.date_joined|date:"d M, Y" }}
+                </strong>
+            </div>
+
+        </div>
+
+
+        <!-- ========================================
+             Report Statistics
+        ======================================== -->
+        <div class="report-stats">
+
+            <!-- Lost Reports -->
+            <div class="stat-card lost-stat">
+
+                <div class="stat-icon">
+                    <i class="bi bi-search"></i>
+                </div>
+
+                <div class="stat-content">
+                    <span>
+                        Lost Reports
+                    </span>
+
+                    <strong>
+                        {{ lost_items.count }}
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <!-- Found Reports -->
+            <div class="stat-card found-stat">
+
+                <div class="stat-icon">
+                    <i class="bi bi-check2-circle"></i>
+                </div>
+
+                <div class="stat-content">
+                    <span>
+                        Found Reports
+                    </span>
+
+                    <strong>
+                        {{ found_items.count }}
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================
+             My Lost Reports
+        ======================================== -->
+        <div class="my-reports-section">
+
+            <div class="reports-header">
+
+                <div>
+                    <span class="section-eyebrow">
+                        MY REPORTS
+                    </span>
+
+                    <h3>
+                        <i class="bi bi-search"></i>
+                        My Lost Items
+                    </h3>
+
+                    <p>
+                        Items you have reported as lost.
+                    </p>
+                </div>
+
+                <span class="report-count">
+                    {{ lost_items.count }}
+                    {% if lost_items.count == 1 %}
+                        Report
+                    {% else %}
+                        Reports
+                    {% endif %}
+                </span>
+
+            </div>
+
+
+            <!-- Lost Reports List -->
+            <div class="reports-list">
+
+                {% for item in lost_items %}
+
+                    <div class="report-item">
+
+                        <!-- Image -->
+                        {% if item.image %}
+                            <div class="report-image">
+                                <img
+                                    src="{{ item.image.url }}"
+                                    alt="{{ item.item_name }}">
+                            </div>
+                        {% else %}
+                            <div class="report-image no-image">
+                                <i class="bi bi-image"></i>
+                            </div>
+                        {% endif %}
+
+
+                        <!-- Content -->
+                        <div class="report-content">
+
+                            <h4>
+                                {{ item.item_name }}
+                            </h4>
+
+                            <p>
+                                {{ item.description|truncatewords:18 }}
+                            </p>
+
+
+                            <div class="report-meta">
+
+                                <span>
+                                    <i class="bi bi-geo-alt"></i>
+                                    {{ item.location_lost }}
+                                </span>
+
+                                <span>
+                                    <i class="bi bi-calendar3"></i>
+                                    {{ item.date_lost|date:"M d, Y" }}
+                                </span>
+
+                            </div>
+
+
+                            <div class="report-actions">
+
+                                <a
+                                    href="{% url 'lost_detail' item.pk %}"
+                                    class="view-report-btn">
+
+                                    View Details
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% empty %}
+
+                    <div class="empty-report">
+
+                        <div class="empty-icon">
+                            <i class="bi bi-search"></i>
+                        </div>
+
+                        <h4>
+                            No Lost Reports Yet
+                        </h4>
+
+                        <p>
+                            You haven't reported any lost items yet.
+                        </p>
+
+                        <a href="{% url 'report_lost_item' %}">
+                            <i class="bi bi-plus-circle"></i>
+                            Report Lost Item
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================
+             My Found Reports
+        ======================================== -->
+        <div class="my-reports-section found-reports-section">
+
+            <div class="reports-header">
+
+                <div>
+                    <span class="section-eyebrow">
+                        MY REPORTS
+                    </span>
+
+                    <h3>
+                        <i class="bi bi-check2-circle"></i>
+                        My Found Items
+                    </h3>
+
+                    <p>
+                        Items you have reported as found.
+                    </p>
+                </div>
+
+                <span class="report-count">
+                    {{ found_items.count }}
+
+                    {% if found_items.count == 1 %}
+                        Report
+                    {% else %}
+                        Reports
+                    {% endif %}
+                </span>
+
+            </div>
+
+
+            <!-- Found Reports List -->
+            <div class="reports-list">
+
+                {% for item in found_items %}
+
+                    <div class="report-item">
+
+                        <!-- Image -->
+                        {% if item.image %}
+                            <div class="report-image">
+                                <img
+                                    src="{{ item.image.url }}"
+                                    alt="{{ item.item_name }}">
+                            </div>
+                        {% else %}
+                            <div class="report-image no-image">
+                                <i class="bi bi-image"></i>
+                            </div>
+                        {% endif %}
+
+
+                        <!-- Content -->
+                        <div class="report-content">
+
+                            <h4>
+                                {{ item.item_name }}
+                            </h4>
+
+                            <p>
+                                {{ item.description|truncatewords:18 }}
+                            </p>
+
+
+                            <div class="report-meta">
+
+                                <span>
+                                    <i class="bi bi-geo-alt"></i>
+                                    {{ item.location_found }}
+                                </span>
+
+                                <span>
+                                    <i class="bi bi-calendar3"></i>
+                                    {{ item.date_found|date:"M d, Y" }}
+                                </span>
+
+                            </div>
+
+
+                            <div class="report-actions">
+
+                                <a
+                                    href="{% url 'found_detail' item.pk %}"
+                                    class="view-report-btn">
+
+                                    View Details
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% empty %}
+
+                    <div class="empty-report">
+
+                        <div class="empty-icon">
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+
+                        <h4>
+                            No Found Reports Yet
+                        </h4>
+
+                        <p>
+                            You haven't reported any found items yet.
+                        </p>
+
+                        <a href="{% url 'report_found_item_form' %}">
+                            <i class="bi bi-plus-circle"></i>
+                            Report Found Item
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================
+             Profile Actions
+        ======================================== -->
+        <div class="profile-actions">
+
+            <!-- Edit Profile -->
+            <a
+                href="{% url 'edit_profile' %}"
+                class="edit-btn">
+
+                <i class="bi bi-pencil-square"></i>
+
+                Edit Profile
+
+            </a>
+
+
+            <!-- Logout -->
+            <a
+                href="{% url 'logout' %}"
+                class="logout-btn">
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

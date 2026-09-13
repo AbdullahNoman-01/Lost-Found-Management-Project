@@ -4,7 +4,7 @@ from .models import ReportFoundItem
 class ReportFoundItemForm(forms.ModelForm):
     class Meta:
         model = ReportFoundItem
-        fields = '__all__'
+        exclude = ["user"]
 
         widgets = {
             'item_name': forms.TextInput(attrs={

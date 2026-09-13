@@ -7,7 +7,7 @@ from .import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name = 'home'),
-    path('authentication/', include('authentication.urls')),
+    path('authentications/', include('authentications.urls')),
     path('lost_items/', include('lost_items.urls')),
     path('found_items/', include('found_items.urls')),
 ]

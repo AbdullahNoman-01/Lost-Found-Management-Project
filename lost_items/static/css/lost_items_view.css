@@ -798,3 +798,31 @@ body {
         font-size: 18px;
     }
 }
+
+
+.custom-message {
+    transition: all 0.4s ease;
+}
+
+.custom-message.hide-message {
+    opacity: 0;
+    transform: translateX(100px);
+}
+
+.reported-by {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin: 12px 0;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.reported-by i {
+    font-size: 17px;
+}
+
+.reported-by strong {
+    color: #2563eb;
+    font-weight: 600;
+}
