@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ai_search.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+   <!-- ================= AI SEARCH ================= -->
+   <div class="ai-search-card">
+      <div class="ai-search-icon">
+         <i class="bi bi-stars"></i>
+      </div>
+
+      <div class="ai-search-content">
+         <div class="ai-search-title">
+               <h5>AI Search</h5>
+               <span class="coming-soon-badge">Coming Soon</span>
+         </div>
+
+         <p>
+               Smart AI-powered search will help you find lost and found
+               items faster with intelligent matching.
+         </p>
+
+         <div class="ai-future-update">
+               <i class="bi bi-clock-history"></i>
+               <span>Available in a future update</span>
+         </div>
+      </div>
+   </div>
+{% endblock content %}

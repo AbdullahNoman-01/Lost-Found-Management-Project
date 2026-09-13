@@ -1,0 +1,322 @@
+
+/* ================= AI SEARCH CARD ================= */
+
+.ai-search-card {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+
+    /* Desktop size */
+    width: 50%;
+    min-height: 250px;
+
+    padding: 30px 28px;
+    margin: 60px auto;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.3s ease;
+    overflow: hidden;
+
+    box-sizing: border-box;
+}
+
+
+/* ================= SOFT GLOW ================= */
+
+.ai-search-card::before {
+    content: "";
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    top: -60px;
+    right: -40px;
+
+    background: rgba(59, 130, 246, 0.18);
+
+    border-radius: 50%;
+    filter: blur(25px);
+
+    pointer-events: none;
+}
+
+
+/* ================= HOVER ================= */
+
+.ai-search-card:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(59, 130, 246, 0.45);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ================= ICON ================= */
+
+.ai-search-icon {
+    flex-shrink: 0;
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    color: #ffffff;
+
+    font-size: 24px;
+
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+
+/* ================= CONTENT ================= */
+
+.ai-search-content {
+    position: relative;
+    z-index: 1;
+
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* ================= TITLE ================= */
+
+.ai-search-title {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.ai-search-title h5 {
+    margin: 0;
+
+    font-size: 19px;
+    font-weight: 700;
+
+    color: #ffffff;
+}
+
+
+/* ================= COMING SOON BADGE ================= */
+
+.coming-soon-badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 10px;
+
+    border-radius: 50px;
+
+    background: rgba(59, 130, 246, 0.15);
+
+    border: 1px solid rgba(59, 130, 246, 0.3);
+
+    color: #60a5fa;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
+
+
+/* ================= DESCRIPTION ================= */
+
+.ai-search-content p {
+    margin: 12px 0 18px;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* ================= FUTURE UPDATE ================= */
+
+.ai-future-update {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #93c5fd;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.ai-future-update i {
+    font-size: 14px;
+}
+
+
+/* ================================================= */
+/* ================= TABLET ======================== */
+/* ================================================= */
+
+@media (max-width: 992px) {
+
+    .ai-search-card {
+        width: 65%;
+        min-height: 230px;
+
+        padding: 28px 24px;
+
+        margin: 50px auto;
+    }
+}
+
+
+/* ================================================= */
+/* ================= MOBILE ======================== */
+/* ================================================= */
+
+@media (max-width: 768px) {
+
+    .ai-search-card {
+        width: 85%;
+        min-height: 220px;
+
+        gap: 15px;
+
+        padding: 25px 20px;
+
+        margin: 45px auto;
+    }
+
+    .ai-search-icon {
+        width: 48px;
+        height: 48px;
+
+        font-size: 21px;
+    }
+
+    .ai-search-title h5 {
+        font-size: 18px;
+    }
+
+    .ai-search-content p {
+        font-size: 13.5px;
+
+        line-height: 1.6;
+    }
+}
+
+
+/* ================================================= */
+/* ================= SMALL MOBILE ================== */
+/* ================================================= */
+
+@media (max-width: 576px) {
+
+    .ai-search-card {
+        width: calc(100% - 30px);
+        min-height: 210px;
+
+        gap: 13px;
+
+        padding: 24px 18px;
+
+        margin: 35px auto;
+    }
+
+    .ai-search-icon {
+        width: 45px;
+        height: 45px;
+
+        font-size: 20px;
+
+        border-radius: 12px;
+    }
+
+    .ai-search-title {
+        gap: 7px;
+    }
+
+    .ai-search-title h5 {
+        font-size: 17px;
+    }
+
+    .coming-soon-badge {
+        padding: 4px 8px;
+
+        font-size: 10px;
+    }
+
+    .ai-search-content p {
+        margin: 10px 0 15px;
+
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+    .ai-future-update {
+        font-size: 12px;
+    }
+}
+
+
+/* ================================================= */
+/* ================= EXTRA SMALL =================== */
+/* ================================================= */
+
+@media (max-width: 400px) {
+
+    .ai-search-card {
+        width: calc(100% - 20px);
+
+        min-height: 220px;
+
+        padding: 22px 15px;
+
+        gap: 11px;
+    }
+
+    .ai-search-icon {
+        width: 42px;
+        height: 42px;
+
+        font-size: 18px;
+    }
+
+    .ai-search-title h5 {
+        font-size: 16px;
+    }
+
+    .ai-search-content p {
+        font-size: 12.5px;
+    }
+}
+

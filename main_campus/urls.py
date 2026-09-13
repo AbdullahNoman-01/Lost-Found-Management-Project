@@ -10,6 +10,8 @@ urlpatterns = [
     path('authentications/', include('authentications.urls')),
     path('lost_items/', include('lost_items.urls')),
     path('found_items/', include('found_items.urls')),
+    path('ai_search/', include('ai_search.urls')),
+    path('about/', include('about.urls')),
 ]
 
 if settings.DEBUG:

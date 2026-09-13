@@ -355,3 +355,149 @@ body{
         font-size: 20px;
     }
 }
+
+/* =========================================
+   Premium Active Username
+========================================= */
+
+.username-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+/* Hide the dot */
+.username-wrapper .active-dot {
+    display: none;
+}
+
+/* Username */
+.username-wrapper strong {
+    position: relative;
+    display: inline-block;
+
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+
+    /* Green text */
+    color: #4ade80;
+
+    /* Soft premium glow */
+    text-shadow: 0 0 12px rgba(74, 222, 128, 0.25);
+
+    /* Smooth movement */
+    transition: all 0.35s ease;
+
+    /* Shine animation */
+    background: linear-gradient(
+        110deg,
+        #22c55e 20%,
+        #86efac 40%,
+        #ffffff 50%,
+        #86efac 60%,
+        #22c55e 80%
+    );
+
+    background-size: 250% 100%;
+    background-position: 100% 0;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    animation: usernameShine 4s ease-in-out infinite;
+}
+
+
+/* Moving Shine */
+@keyframes usernameShine {
+
+    0% {
+        background-position: 100% 0;
+        transform: translateY(0);
+    }
+
+    40% {
+        background-position: 0% 0;
+        transform: translateY(-1px);
+    }
+
+    60% {
+        background-position: 0% 0;
+        transform: translateY(-1px);
+    }
+
+    100% {
+        background-position: 100% 0;
+        transform: translateY(0);
+    }
+}
+
+
+/* Hover */
+.username-wrapper strong:hover {
+    transform: translateY(-2px) scale(1.03);
+
+    text-shadow:
+        0 0 8px rgba(74, 222, 128, 0.5),
+        0 0 20px rgba(74, 222, 128, 0.25);
+}
+
+
+/* Welcome Back */
+.welcome-text {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+.username-wrapper {
+    position: relative;
+}
+
+.username-wrapper .active-dot {
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: #4ade80;
+    border-radius: 50%;
+    margin-right: 7px;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+}
+
+
+
+/* ================= MOBILE NAVBAR MENU ================= */
+
+@media (max-width: 991.98px) {
+
+    .navbar-collapse {
+        background: #0f172a;
+        margin-top: 12px;
+        padding: 18px 20px;
+
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Navbar links */
+    .navbar-collapse .nav-link {
+        color: #ffffff !important;
+        padding: 10px 8px;
+        border-radius: 8px;
+
+        transition: all 0.25s ease;
+    }
+
+    .navbar-collapse .nav-link:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: #60a5fa !important;
+        padding-left: 14px;
+    }
+}
+
