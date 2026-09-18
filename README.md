@@ -3,6 +3,7 @@
 A modern web-based **Lost & Found Management System** built with **Python and Django**, designed to help students and campus members report, search, and manage lost and found items through a centralized platform.
 
 🌐 **Live Demo:** https://lost-found-management-project.onrender.com/
+
 💻 **GitHub Repository:** https://github.com/AbdullahNoman-01/Lost-Found-Management-Project
 
 ---
@@ -97,21 +98,6 @@ Search can be performed using:
 * 🏷️ Category
 
 This makes it easier for users to discover potentially matching items.
-
----
-
-## 🤖 AI Search
-
-The project also includes an **AI Search** section prepared for future intelligent search functionality.
-
-The planned concept includes:
-
-* Intelligent item searching
-* Lost and found item matching
-* AI-assisted discovery
-* Potential image similarity matching
-
-> 🚧 AI-powered matching functionality is currently planned for a future update.
 
 ---
 
